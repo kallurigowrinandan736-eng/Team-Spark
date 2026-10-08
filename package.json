@@ -1,0 +1,28 @@
+{
+  "name": "aquaq-root",
+  "version": "1.0.0",
+  "description": "AquaQ - Quantum-AI Powered Smart Irrigation & Water Resource Allocation Platform",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "cd backend && uvicorn app.main:app --reload --port 8000",
+    "dev:all": "concurrently -n \"frontend,backend\" -c \"cyan,magenta\" \"npm --prefix frontend run dev\" \"cd backend && uvicorn app.main:app --reload --port 8000\"",
+    "build": "npm --prefix frontend run build",
+    "test:backend": "cd backend && pytest",
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && python -m pip install -r requirements.txt"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "keywords": [
+    "quantum-inspired",
+    "smart-irrigation",
+    "water-allocation",
+    "qubo",
+    "fastapi",
+    "nextjs"
+  ],
+  "author": "Team Spark",
+  "license": "MIT"
+}

@@ -1,0 +1,11 @@
+id,crop,region_id,area_ha,growth_stage,base_water_requirement_mm,total_demand_mcm,priority,current_allocation_mcm,deficit_mcm,season
+crop_1,Rice,reg_3,85000,Flowering,1200,320.0,5,275.0,45.0,Kharif
+crop_2,Rice,reg_1,72000,Vegetative,1150,260.0,5,220.0,40.0,Kharif
+crop_3,Cotton,reg_5,64000,Vegetative,700,155.0,4,135.0,20.0,Kharif
+crop_4,Maize,reg_2,45000,Sowing,550,90.0,3,80.0,10.0,Rabi
+crop_5,Sugarcane,reg_1,38000,Maturity,1500,190.0,4,155.0,35.0,Perennial
+crop_6,Groundnut,reg_4,52000,Vegetative,500,95.0,3,75.0,20.0,Rabi
+crop_7,Vegetables,reg_2,28000,Flowering,450,60.0,4,55.0,5.0,Zaid
+crop_8,Wheat,reg_4,32000,Sowing,450,55.0,2,40.0,15.0,Rabi
+crop_9,Cotton,reg_1,41000,Flowering,720,110.0,4,95.0,15.0,Kharif
+crop_10,Vegetables,reg_3,31000,Vegetative,420,50.0,4,45.0,5.0,Zaid

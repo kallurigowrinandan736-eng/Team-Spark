@@ -1,0 +1,5 @@
+id,name,lat,lng,max_capacity_mcm,current_storage_mcm,min_reserve_mcm,expected_inflow_mcm,expected_outflow_mcm,current_level_m,max_level_m,status
+res_1,Nagarjuna Sagar Reservoir,16.5775,79.3142,6500.0,4680.0,1200.0,620.0,450.0,175.5,179.8,Optimal
+res_2,Srisailam Reservoir,16.0863,78.8996,6100.0,4120.0,1000.0,580.0,410.0,265.2,270.0,Optimal
+res_3,Pulichintala Project,16.757,80.054,1280.0,890.0,250.0,210.0,180.0,51.8,53.3,Normal
+res_4,Prakasam Barrage (Krishna Delta),16.5097,80.6053,87.0,72.0,20.0,340.0,310.0,17.4,17.5,Normal

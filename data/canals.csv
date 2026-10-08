@@ -1,0 +1,9 @@
+id,name,source_reservoir_id,destination_region_id,capacity_mcm,current_flow_mcm,loss_pct,efficiency,status,path
+can_1,Nagarjuna Right Main Canal,res_1,reg_1,350.0,240.0,0.12,0.88,Normal,"[[16.5775, 79.3142], [16.48, 79.85], [16.3067, 80.4365]]"
+can_2,Nagarjuna Left Main Canal,res_1,reg_2,310.0,210.0,0.14,0.86,Normal,"[[16.5775, 79.3142], [16.7, 79.95], [16.5062, 80.648]]"
+can_3,Srisailam Right Branch Canal (SRBC),res_2,reg_4,280.0,180.0,0.15,0.85,Normal,"[[16.0863, 78.8996], [15.82, 79.45], [15.5057, 80.0499]]"
+can_4,Palnadu Feeder Canal,res_1,reg_5,220.0,150.0,0.11,0.89,Normal,"[[16.5775, 79.3142], [16.42, 79.68], [16.34, 79.98]]"
+can_5,Pulichintala Link Canal,res_3,reg_1,190.0,130.0,0.09,0.91,Normal,"[[16.757, 80.054], [16.55, 80.25], [16.3067, 80.4365]]"
+can_6,Krishna Main Delta High-Level Canal,res_4,reg_3,420.0,310.0,0.08,0.92,Normal,"[[16.5097, 80.6053], [16.32, 80.89], [16.18, 81.13]]"
+can_7,Distributary 1 - Guntur East,res_4,reg_1,140.0,95.0,0.1,0.9,Normal,"[[16.5097, 80.6053], [16.41, 80.52], [16.3067, 80.4365]]"
+can_8,Distributary 2 - Palnadu South,res_2,reg_5,160.0,110.0,0.13,0.87,Normal,"[[16.0863, 78.8996], [16.21, 79.52], [16.34, 79.98]]"

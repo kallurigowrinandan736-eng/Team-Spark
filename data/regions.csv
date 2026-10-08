@@ -1,0 +1,6 @@
+id,name,lat,lng,priority,total_irrigated_area_ha,active_farmers,soil_type,groundwater_depth_m
+reg_1,Guntur,16.3067,80.4365,5,185000,62000,Black Cotton,8.5
+reg_2,Vijayawada,16.5062,80.648,4,120000,41000,Alluvial,5.2
+reg_3,Krishna Delta,16.18,81.13,5,210000,78000,Coastal Alluvial Clay,4.1
+reg_4,Prakasam,15.5057,80.0499,3,145000,49000,Red Sandy Loam,12.8
+reg_5,Palnadu,16.34,79.98,4,160000,54000,Black Loam,10.4
