@@ -6,7 +6,7 @@ from app.config import settings
 from app.data_loader import data_store
 from app.ml.demand_model import demand_predictor
 from app.ml.inflow_model import inflow_forecaster
-from app.routers import data, predictions, optimization, scenarios, alerts, recommendations, pipeline, upload
+from app.routers import data, predictions, optimization, scenarios, alerts, recommendations, pipeline, upload, quantum
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("aquaq")
@@ -22,7 +22,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title=settings.PROJECT_NAME,
     version=settings.VERSION,
-    description="Backend API for AquaQ - Quantum-AI Powered Smart Irrigation & Water Resource Allocation",
+    description="Backend API for Jaldhar - Quantum-AI Powered Smart Irrigation & Water Resource Allocation",
     lifespan=lifespan
 )
 
@@ -39,6 +39,7 @@ app.add_middleware(
 app.include_router(data.router, prefix=settings.API_V1_STR)
 app.include_router(predictions.router, prefix=settings.API_V1_STR)
 app.include_router(optimization.router, prefix=settings.API_V1_STR)
+app.include_router(quantum.router, prefix=settings.API_V1_STR)
 app.include_router(scenarios.router, prefix=settings.API_V1_STR)
 app.include_router(alerts.router, prefix=settings.API_V1_STR)
 app.include_router(recommendations.router, prefix=settings.API_V1_STR)

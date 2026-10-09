@@ -43,13 +43,13 @@ export const KpiCard: React.FC<KpiCardProps> = ({
   };
 
   return (
-    <div className={`relative p-5 rounded-2xl bg-gradient-to-br bg-ocean-900/80 border backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-slate-600 ${variantStyles[variant]}`}>
+    <div className={`relative p-5 rounded-2xl bg-gradient-to-br dark:bg-ocean-900/80 bg-white/95 border dark:border-slate-800/80 border-emerald-200/80 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400 hover:shadow-md ${variantStyles[variant]}`}>
       <div className="flex items-start justify-between">
         <div className="space-y-1">
-          <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">{title}</span>
+          <span className="text-xs font-semibold dark:text-slate-400 text-emerald-800 uppercase tracking-wider">{title}</span>
           <div className="flex items-baseline gap-1.5">
-            <span className="text-2xl font-extrabold text-white tracking-tight">{value}</span>
-            {unit && <span className="text-xs font-semibold text-slate-400">{unit}</span>}
+            <span className="text-2xl font-black dark:text-white text-emerald-950 tracking-tight">{value}</span>
+            {unit && <span className="text-xs font-semibold dark:text-slate-400 text-emerald-700">{unit}</span>}
           </div>
         </div>
         <div className={`p-2.5 rounded-xl border ${iconBgStyles[variant]} flex-shrink-0`}>
@@ -58,13 +58,13 @@ export const KpiCard: React.FC<KpiCardProps> = ({
       </div>
 
       {(subtitle || delta) && (
-        <div className="mt-3 pt-2.5 border-t border-slate-800/80 flex items-center justify-between text-xs">
-          {subtitle && <span className="text-slate-400 line-clamp-1">{subtitle}</span>}
+        <div className="mt-3 pt-2.5 border-t dark:border-slate-800/80 border-emerald-100 flex items-center justify-between text-xs">
+          {subtitle && <span className="dark:text-slate-400 text-emerald-700 line-clamp-1">{subtitle}</span>}
           {delta && (
-            <div className={`flex items-center gap-1 font-semibold ml-auto ${delta.isPositive ? "text-emerald-400" : "text-rose-400"}`}>
+            <div className={`flex items-center gap-1 font-semibold ml-auto ${delta.isPositive ? "text-emerald-600 dark:text-emerald-400" : "text-rose-500 dark:text-rose-400"}`}>
               {delta.isPositive ? <TrendingUp className="w-3.5 h-3.5" /> : <TrendingDown className="w-3.5 h-3.5" />}
               <span>{delta.value}</span>
-              {delta.text && <span className="text-[10px] text-slate-500 font-normal">({delta.text})</span>}
+              {delta.text && <span className="text-[10px] dark:text-slate-500 text-emerald-600 font-normal">({delta.text})</span>}
             </div>
           )}
         </div>

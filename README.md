@@ -13,9 +13,10 @@
 
 ## ⚠️ Honesty & Simulation Disclaimers
 
-1. **Quantum-Inspired Simulation**: No physical quantum processing units (QPUs) are used. The quantum optimization layer formulates the problem as a Quadratic Unconstrained Binary Optimization (**QUBO**) Hamiltonian and solves it via simulated annealing and simulated quantum annealing on classical hardware.
+1. **Quantum Layer & Qiskit Integration**: Powered by [IBM Qiskit](https://github.com/Qiskit/qiskit) (v2.5+). Formulates the water allocation QUBO problem into parameterized QAOA quantum circuits (problem unitary $R_Z$/$R_{ZZ}$ and transverse mixer $R_X$) with circuit depth analysis and statevector simulation. Classical simulation executes via Simulated Quantum Annealing (SQA) and statevector probability sampling without requiring access to a physical quantum processing unit (QPU).
 2. **Demo Data**: All reservoir capacities, canal coordinates, historical rainfall, and crop records are simulated/synthetic datasets based on the Krishna River Basin in Andhra Pradesh, India.
 3. **Simulated AI/ML Models**: Machine learning models (RandomForest / GradientBoosting) are trained on agronomic FAO-56 Penman-Monteith synthetic datasets with realistic monsoon seasonality.
+
 
 ---
 

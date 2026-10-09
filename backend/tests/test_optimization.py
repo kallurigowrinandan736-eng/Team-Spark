@@ -53,3 +53,13 @@ def test_pipeline_execution():
     assert len(pipe_res.alerts) > 0
     assert len(pipe_res.recommendations) > 0
     assert pipe_res.comparison.verdict is not None
+
+def test_qiskit_qaoa_circuit():
+    from app.optimization.qiskit_engine import generate_qiskit_qaoa_analysis
+    res = generate_qiskit_qaoa_analysis(num_routes=4, discretization_levels=2, p_layers=1)
+    assert res["qiskit_enabled"] is True
+    assert res["circuit_depth"] > 0
+    assert "h" in res["gate_counts"]
+    assert "cx" in res["gate_counts"]
+    assert len(res["basis_state_probabilities"]) > 0
+

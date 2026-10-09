@@ -10,8 +10,10 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Poppins", "var(--font-poppins)", "sans-serif"],
+        sans: ["'Helvetica Neue'", "Helvetica", "Arial", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+        helvetica: ["'Helvetica Neue'", "Helvetica", "Arial", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
       },
+
       colors: {
         ocean: {
           950: "#060b13",

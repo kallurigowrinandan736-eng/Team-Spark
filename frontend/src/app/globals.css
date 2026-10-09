@@ -1,18 +1,52 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --font-poppins: 'Poppins', sans-serif;
+  --font-helvetica: 'Helvetica Neue', Helvetica, Arial, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+/* Base Body Styles */
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #060b13;
-  color: #f1f5f9;
+  font-family: 'Helvetica Neue', Helvetica, Arial, -apple-system, BlinkMacSystemFont, sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.dark body {
+  background-color: #061008;
+  color: #f1f5f9;
+}
+
+html.light body {
+  background-color: #f7faf8;
+  color: #064e3b;
+}
+
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4,
+html.light h5,
+html.light h6 {
+  color: #022c22;
+}
+
+html.light .text-slate-900,
+html.light .text-slate-800 {
+  color: #022c22;
+}
+
+html.light .text-slate-700,
+html.light .text-slate-600 {
+  color: #064e3b;
+}
+
+html.light .text-slate-500,
+html.light .text-slate-400 {
+  color: #047857;
 }
 
 /* Custom Scrollbar */
@@ -20,44 +54,298 @@ body {
   width: 6px;
   height: 6px;
 }
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.6);
+
+html.dark .custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(8, 20, 11, 0.6);
   border-radius: 8px;
 }
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(56, 189, 248, 0.25);
+html.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(200, 230, 74, 0.25);
   border-radius: 8px;
 }
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(56, 189, 248, 0.5);
+html.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(200, 230, 74, 0.5);
 }
 
-/* Leaflet Dark Filter */
-.map-tiles-dark {
+html.light .custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(240, 253, 244, 0.8);
+  border-radius: 8px;
+}
+html.light .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(16, 185, 129, 0.35);
+  border-radius: 8px;
+}
+html.light .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(16, 185, 129, 0.65);
+}
+
+/* Leaflet Map Styling */
+html.dark .map-tiles-dark {
   filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
 }
 
-.leaflet-container {
-  background-color: #060b13 !important;
+html.light .map-tiles-dark {
+  filter: none;
+}
+
+html.dark .leaflet-container {
+  background-color: #061008 !important;
   font-family: inherit;
 }
 
-.leaflet-popup-content-wrapper {
-  background: #0f172a !important;
+html.light .leaflet-container {
+  background-color: #f0fdf4 !important;
+  font-family: inherit;
+}
+
+/* Custom Leaflet DivIcon Symbol Reset */
+.leaflet-div-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+html.dark .leaflet-popup-content-wrapper {
+  background: #0d1a10 !important;
   color: #f1f5f9 !important;
-  border: 1px solid #334155;
+  border: 1px solid #1e3a24;
   border-radius: 12px !important;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5) !important;
 }
 
-.leaflet-popup-tip {
-  background: #0f172a !important;
+html.light .leaflet-popup-content-wrapper {
+  background: #ffffff !important;
+  color: #064e3b !important;
+  border: 1px solid #a7f3d0;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 25px -5px rgba(5, 150, 105, 0.15) !important;
+}
+
+html.dark .leaflet-popup-tip {
+  background: #0d1a10 !important;
+}
+
+html.light .leaflet-popup-tip {
+  background: #ffffff !important;
 }
 
 /* Glassmorphism Classes */
-.glass-panel {
-  background: rgba(15, 28, 48, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+html.dark .glass-panel {
+  background: rgba(10, 22, 13, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+html.light .glass-panel {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(16, 185, 129, 0.22);
+  box-shadow: 0 4px 20px -2px rgba(16, 185, 129, 0.08);
+}
+
+/* ========================================================================= */
+/* GREEN & WHITE LIGHT THEME COMPREHENSIVE OVERRIDES                         */
+/* ========================================================================= */
+html.light {
+  color-scheme: light;
+}
+
+/* Surface Overrides - Clean Crisp White & Mint Glass */
+html.light .bg-slate-900,
+html.light .bg-slate-900\/95,
+html.light .bg-slate-900\/90,
+html.light .bg-slate-900\/85,
+html.light .bg-slate-900\/80,
+html.light .bg-slate-900\/60,
+html.light .bg-slate-900\/50,
+html.light .bg-slate-900\/40,
+html.light .bg-slate-950,
+html.light .bg-slate-950\/90,
+html.light .bg-slate-950\/80,
+html.light .bg-slate-950\/70,
+html.light .bg-ocean-900,
+html.light .bg-ocean-900\/95,
+html.light .bg-ocean-900\/90,
+html.light .bg-ocean-900\/80,
+html.light .bg-ocean-900\/50,
+html.light .bg-ocean-950,
+html.light .bg-\[\#08120a\],
+html.light .bg-\[\#08120a\]\/80,
+html.light .bg-\[\#08120a\]\/85,
+html.light .bg-\[\#08120a\]\/90,
+html.light .bg-\[\#0a160d\],
+html.light .bg-\[\#0a160d\]\/90,
+html.light .bg-\[\#0b1a0e\],
+html.light .bg-\[\#061008\] {
+  background-color: #ffffff !important;
+}
+
+/* Subtle Card & Tab Surfaces */
+html.light .bg-slate-950\/70,
+html.light .bg-slate-900\/40,
+html.light .bg-slate-800\/80,
+html.light .bg-slate-800\/60,
+html.light .bg-slate-800\/40 {
+  background-color: #f0fdf4 !important;
+}
+
+html.light .bg-slate-950\/70:hover,
+html.light .bg-slate-900\/40:hover,
+html.light .bg-slate-800\/60:hover {
+  background-color: #dcfce7 !important;
+}
+
+/* Hero & Header Dark Gradients -> Radiant White & Mint Green Glass */
+html.light .from-\[\#122316\]\/90,
+html.light .from-ocean-900 {
+  background-image: linear-gradient(135deg, #ffffff 0%, #f0fdf4 60%, #ecfdf5 100%) !important;
+  border-color: #a7f3d0 !important;
+}
+
+/* High-Definition Emerald Borders */
+html.light .border-slate-800,
+html.light .border-slate-800\/90,
+html.light .border-slate-800\/80,
+html.light .border-slate-800\/60,
+html.light .border-slate-700,
+html.light .border-slate-700\/80,
+html.light .border-slate-700\/60,
+html.light .border-white\/10,
+html.light .border-white\/5,
+html.light .border-quantum-500\/40,
+html.light .border-cyan-500\/50,
+html.light .border-emerald-500\/30 {
+  border-color: #a7f3d0 !important;
+}
+
+/* ========================================================================= */
+/* GREEN & WHITE TYPOGRAPHY HIERARCHY                                        */
+/* ========================================================================= */
+
+/* 1. Primary Headings & Bold Accents: Deep Forest Green (#022c22) */
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4,
+html.light h5,
+html.light h6,
+html.light strong,
+html.light b,
+html.light th {
+  color: #022c22 !important;
+}
+
+/* 2. Slate Classes Mapped to High-Contrast Green Hierarchy (No Dull Gray!) */
+html.light .text-slate-950,
+html.light .text-slate-900,
+html.light .text-slate-800,
+html.light .text-gray-900,
+html.light .text-gray-800 {
+  color: #022c22 !important;
+}
+
+html.light .text-slate-700,
+html.light .text-slate-600,
+html.light .text-gray-700,
+html.light .text-gray-600 {
+  color: #064e3b !important;
+}
+
+html.light .text-slate-500,
+html.light .text-slate-400,
+html.light .text-gray-500,
+html.light .text-gray-400 {
+  color: #047857 !important;
+}
+
+html.light .text-slate-300,
+html.light .text-slate-200,
+html.light .text-slate-100 {
+  color: #065f46 !important;
+}
+
+/* 3. Text-White on White Surfaces: Default to Deep Forest Green */
+html.light .text-white {
+  color: #022c22;
+}
+
+/* 4. Text-White on Green/Emerald/Gradient/Buttons/Badges: Pure Crisp White (#ffffff) */
+html.light button.text-white,
+html.light button .text-white,
+html.light a[class*="bg-emerald"].text-white,
+html.light a[class*="bg-emerald"] .text-white,
+html.light a[class*="bg-teal"].text-white,
+html.light a[class*="bg-teal"] .text-white,
+html.light a[class*="bg-green"].text-white,
+html.light a[class*="bg-green"] .text-white,
+html.light a[class*="bg-gradient"].text-white,
+html.light a[class*="bg-gradient"] .text-white,
+html.light [class*="bg-emerald-600"] .text-white,
+html.light [class*="bg-emerald-600"].text-white,
+html.light [class*="bg-emerald-700"] .text-white,
+html.light [class*="bg-emerald-700"].text-white,
+html.light [class*="bg-emerald-800"] .text-white,
+html.light [class*="bg-emerald-800"].text-white,
+html.light [class*="bg-emerald-900"] .text-white,
+html.light [class*="bg-emerald-900"].text-white,
+html.light [class*="bg-teal-600"] .text-white,
+html.light [class*="bg-teal-600"].text-white,
+html.light [class*="bg-gradient-to"] .text-white,
+html.light [class*="bg-gradient-to"].text-white,
+html.light .btn-primary,
+html.light .btn-primary *,
+html.light [role="button"].text-white,
+html.light [role="button"] .text-white {
+  color: #ffffff !important;
+}
+
+/* 5. Theme Badges & Highlights */
+html.light .text-\[\#C8E64A\],
+html.light .text-cyan-400,
+html.light .text-cyan-300 {
+  color: #059669 !important;
+}
+
+html.light .text-emerald-300,
+html.light .text-emerald-400 {
+  color: #047857 !important;
+}
+
+html.light .text-quantum-300,
+html.light .text-quantum-400 {
+  color: #047857 !important;
+}
+
+/* 6. Form Controls & Sliders */
+html.light input[type="text"],
+html.light input[type="number"],
+html.light select,
+html.light textarea {
+  background-color: #ffffff !important;
+  color: #022c22 !important;
+  border-color: #6ee7b7 !important;
+}
+
+html.light input[type="range"] {
+  accent-color: #059669 !important;
+}
+
+/* Shadows */
+html.light .shadow-glass {
+  box-shadow: 0 10px 30px -4px rgba(16, 185, 129, 0.10), 0 2px 8px -2px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Table Overrides */
+html.light tr:hover td {
+  background-color: rgba(240, 253, 244, 0.7) !important;
+}
+
+@keyframes flowDash {
+  from {
+    stroke-dashoffset: 28;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
 }

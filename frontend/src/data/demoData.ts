@@ -352,8 +352,8 @@ export const DEMO_CROPS: Crop[] = [
 export const DEMO_SCENARIOS: ScenarioDefinition[] = [
   {
     id: "scenario_a",
-    name: "Scenario A: Normal Monsoon & Standard Allocation",
-    description: "Baseline seasonal conditions with typical rainfall, nominal reservoir storage, and steady crop water demand.",
+    name: "🟢 Normal Monsoon & Balanced Storage",
+    description: "Baseline seasonal conditions with typical rainfall (750mm), 72% reservoir storage (7,000 ML/MCM available), and nominal crop demand.",
     rainfall_factor: 1.0,
     storage_factor: 1.0,
     inflow_factor: 1.0,
@@ -363,10 +363,10 @@ export const DEMO_SCENARIOS: ScenarioDefinition[] = [
   },
   {
     id: "scenario_b",
-    name: "Scenario B: Severe Drought & High Evapotranspiration",
-    description: "Critical 60% rainfall deficit, depleted reservoir live storage, high ambient temperatures (+3.5°C), and elevated crop stress.",
+    name: "🔴 Drought Scarcity & High Crop Stress",
+    description: "Critical 60% rainfall deficit with Available Water: 4,000 ML/MCM vs Total Demand: 7,000 ML/MCM (+3.5°C temp), requiring high-priority crop prioritization.",
     rainfall_factor: 0.40,
-    storage_factor: 0.55,
+    storage_factor: 0.41,
     inflow_factor: 0.35,
     demand_factor: 1.35,
     canal_capacity_factor: 1.0,
@@ -374,8 +374,8 @@ export const DEMO_SCENARIOS: ScenarioDefinition[] = [
   },
   {
     id: "scenario_c",
-    name: "Scenario C: Heavy Monsoon & Catchment Inflow Surge",
-    description: "Surplus precipitation (+70%), near-capacity reservoir levels, abundant river discharge, and reduced irrigation demand.",
+    name: "🔵 Heavy Rainfall & Catchment Inflow Surge",
+    description: "Surplus precipitation (+70%), 95% reservoir storage, abundant river discharge, and reduced irrigation demand.",
     rainfall_factor: 1.70,
     storage_factor: 1.15,
     inflow_factor: 2.20,
@@ -385,19 +385,8 @@ export const DEMO_SCENARIOS: ScenarioDefinition[] = [
   },
   {
     id: "scenario_d",
-    name: "Scenario D: Intensified Kharif Crop Demand",
-    description: "Expanded agricultural command area and simultaneous vegetative/flowering stages resulting in +45% crop water demand.",
-    rainfall_factor: 0.90,
-    storage_factor: 0.90,
-    inflow_factor: 0.85,
-    demand_factor: 1.45,
-    canal_capacity_factor: 1.0,
-    temperature_delta_c: 1.0
-  },
-  {
-    id: "scenario_e",
-    name: "Scenario E: Upstream Reservoir Depletion",
-    description: "Upstream catchment shortfall causing 55% reduction in Nagarjuna Sagar and Srisailam live storages.",
+    name: "🟡 Low Reservoir & Storage Conservation",
+    description: "Upstream catchment shortfall causing 55% reduction in reservoir live storage, requiring strict conservation reserves.",
     rainfall_factor: 0.75,
     storage_factor: 0.45,
     inflow_factor: 0.50,
@@ -406,8 +395,20 @@ export const DEMO_SCENARIOS: ScenarioDefinition[] = [
     temperature_delta_c: 1.2
   },
   {
+    id: "scenario_e",
+    name: "🌧️ Unexpected Inflow Surge",
+    description: "Unseasonal cloudburst and flash runoff (+120% inflow), requiring high-throughput canal diversion to prevent spillway wastage.",
+    rainfall_factor: 1.50,
+    storage_factor: 1.05,
+    inflow_factor: 2.40,
+    demand_factor: 0.85,
+    canal_capacity_factor: 1.0,
+    temperature_delta_c: -0.5
+  },
+
+  {
     id: "scenario_f",
-    name: "Scenario F: Canal Infrastructure Bottleneck",
+    name: "🚧 Canal Capacity Bottleneck",
     description: "Maintenance closures and siltation reducing main and branch canal conveying capacities by 45%.",
     rainfall_factor: 1.0,
     storage_factor: 1.0,

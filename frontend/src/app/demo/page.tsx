@@ -155,13 +155,12 @@ export default function HackathonDemoPage() {
               setCurrentStepIndex(idx);
               setIsPlaying(false);
             }}
-            className={`h-2 rounded-full transition-all ${
-              idx === currentStepIndex
+            className={`h-2 rounded-full transition-all ${idx === currentStepIndex
                 ? "bg-gradient-to-r from-cyan-400 to-quantum-400 shadow-glow-cyan"
                 : idx < currentStepIndex
-                ? "bg-cyan-700/80"
-                : "bg-slate-800"
-            }`}
+                  ? "bg-cyan-700/80"
+                  : "bg-slate-800"
+              }`}
             title={s.title}
           />
         ))}

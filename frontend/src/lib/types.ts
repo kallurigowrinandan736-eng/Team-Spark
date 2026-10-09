@@ -125,7 +125,16 @@ export interface QuantumResultDetails {
   convergence_curve: ConvergencePoint[];
   qubo_matrix_sample?: number[][];
   variable_labels?: string[];
+  qiskit_enabled?: boolean;
+  qiskit_version?: string;
+  qiskit_repo?: string;
+  circuit_depth?: number;
+  gate_counts?: Record<string, number>;
+  circuit_diagram?: string;
+  qaoa_layers?: number;
+  basis_state_probabilities?: Record<string, number>;
 }
+
 
 export interface OptimizationRunResult {
   method_name: string;
@@ -269,3 +278,224 @@ export interface PipelineRunResponse {
   demand_predictions: DemandPredictionResponse;
   inflow_forecasts: InflowForecastResponse;
 }
+
+// Stage 4 Machine Learning Types
+export interface InflowPredictionRequest {
+  reservoir_id: string;
+  prediction_period?: string;
+  rainfall_anomaly_pct?: number;
+  rainfall_factor?: number;
+  inflow_factor?: number;
+}
+
+export interface InflowPredictionResult {
+  reservoir_id: string;
+  prediction_period: string;
+  predicted_inflow_ml: number;
+  predicted_inflow_mcm: number;
+  confidence_bounds?: {
+    p10_inflow_mcm: number;
+    p90_inflow_mcm: number;
+    p10_inflow_ml: number;
+    p90_inflow_ml: number;
+  };
+  model_id: string;
+  algorithm: string;
+  status: string;
+  evaluation_metrics?: {
+    mcm: { mae: number; rmse: number; r2: number };
+    megaliters: { mae: number; rmse: number; r2: number };
+  };
+  inputs_used?: Record<string, any>;
+  limitations?: string;
+}
+
+export interface InflowHistoryPoint {
+  period: string;
+  actual_mcm: number;
+  actual_ml: number;
+  is_test_period: boolean;
+  rainfall_mm?: number;
+  predicted_mcm?: number;
+  predicted_ml?: number;
+}
+
+export interface InflowTestEvalPoint {
+  period: string;
+  actual_mcm: number;
+  actual_ml: number;
+  predicted_mcm: number;
+  predicted_ml: number;
+  error_mcm: number;
+}
+
+export interface InflowTimeSeriesResponse {
+  reservoir_id: string;
+  history: InflowHistoryPoint[];
+  test_eval: InflowTestEvalPoint[];
+  metadata?: any;
+}
+
+// --- Quantum Computing Types (Stage 4) ---
+
+export interface QuantumOverviewData {
+  title: string;
+  description: string;
+  current_scenario: string;
+  available_water_mcm: number;
+  available_water_ml: number;
+  total_crop_demand_mcm: number;
+  total_crop_demand_ml: number;
+  inflow_prediction_source: string;
+  execution_mode: string;
+  qiskit_version: string;
+  ibm_runtime_ready: boolean;
+  ibm_runtime_version?: string;
+  workflow_steps: { step: string; desc: string }[];
+  selected_scenario?: {
+    id?: string;
+    name?: string;
+    description?: string;
+    available_water_mcm?: number;
+    total_crop_demand_mcm?: number;
+  };
+  reservoir_telemetry?: {
+    id?: string;
+    name?: string;
+    current_storage_mcm?: number;
+    full_reservoir_level_mcm?: number;
+    storage_ratio?: number;
+  };
+  last_execution?: {
+    mode?: string;
+    timestamp?: string;
+    measured_runtime_ms?: number;
+    optimal_value?: number;
+    valid?: boolean;
+    total_allocated_mcm?: number;
+  };
+}
+
+export interface QuboVariableItem {
+  index: number;
+  label: string;
+  canal_id: string;
+  canal_name: string;
+  crop_id: string;
+  crop_name: string;
+  level_fraction: number;
+  allocated_mcm: number;
+}
+
+export interface QuboPenaltyWeightItem {
+  name: string;
+  weight: number;
+  unit: string;
+  description: string;
+}
+
+export interface QuboModelData {
+  num_variables: number;
+  num_qubits: number;
+  discretization_levels: number[];
+  variables: QuboVariableItem[];
+  objective_terms: Record<string, string>;
+  penalties: QuboPenaltyWeightItem[];
+  matrix_size: number;
+  non_zero_elements: number;
+  sparsity_pct: number;
+  sample_subproblem: Record<string, any>;
+  formula_latex: string;
+  explanation: string;
+  q_matrix?: number[][];
+}
+
+export interface QaoaExecutionRequest {
+  p_layers?: number;
+  reps?: number;
+  optimizer?: string;
+  optimizer_name?: string;
+  maxiter?: number;
+  shots?: number;
+  use_subproblem?: boolean;
+  scenario_name?: string;
+  scenario_id?: string;
+}
+
+export interface QaoaExecutionResponse {
+  status: string;
+  execution_mode: string;
+  qiskit_version: string;
+  num_qubits: number;
+  p_layers: number;
+  circuit_depth: number;
+  optimal_gamma: number[];
+  optimal_beta: number[];
+  best_bitstring: string;
+  optimal_energy: number;
+  runtime_ms: number;
+  convergence_history: { iteration: number; energy: number; gamma_norm: number; beta_norm: number }[];
+  top_bitstrings: { bitstring: string; count: number; probability: number; is_best: boolean }[];
+  allocations: any[];
+  validation: {
+    is_valid: boolean;
+    violations: string[];
+    total_released_mcm: number;
+    total_released_ml: number;
+    available_water_mcm: number;
+    supply_utilization_pct: number;
+    overall_demand_satisfaction_pct: number;
+    jains_fairness_index: number;
+    allocations: any[];
+  };
+  classical_comparison: {
+    solver_type: string;
+    best_bitstring: string;
+    energy: number;
+    runtime_ms: number;
+    demand_satisfaction_pct: number;
+    approximation_ratio: number;
+    status: string;
+  };
+  optimal_cost?: number;
+  optimal_bitstring?: string;
+  measured_runtime_ms?: number;
+  num_evaluations?: number;
+  allocation_result?: any;
+  classical_baseline?: any;
+}
+
+export interface IbmRuntimeStatusData {
+  runtime_sdk_available: boolean;
+  runtime_version?: string;
+  channel: string;
+  instance_crn_masked: string;
+  has_api_key: boolean;
+  connected_to_hardware: boolean;
+  available_backends: string[];
+  mode_label: string;
+  message: string;
+  setup_instructions: string[];
+}
+
+export interface IbmJobResultData {
+  status: string;
+  job_id: string;
+  backend_name: string;
+  execution_mode: string;
+  measured_runtime_ms: number;
+  circuit_depth: number;
+  num_qubits: number;
+  best_bitstring: string;
+  allocations: any[];
+  validation: any;
+  message: string;
+  shots?: number;
+  top_measurement_counts?: Record<string, number>;
+  optimal_cost?: number;
+  optimal_bitstring?: string;
+  reps?: number;
+  created_at?: string;
+}
+
+

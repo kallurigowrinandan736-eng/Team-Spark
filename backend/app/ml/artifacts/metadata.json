@@ -1,0 +1,157 @@
+{
+  "model_id": "jaldhara-inflow-gbr-v4",
+  "algorithm": "Random Forest Regressor",
+  "target_variable": "inflow_mcm",
+  "target_units": "Million Cubic Meters (MCM) and Megaliters (ML)",
+  "unit_conversion": "1 MCM = 1,000 ML",
+  "training_period": {
+    "start": "2023-03",
+    "end": "2024-12",
+    "num_samples": 88
+  },
+  "test_period": {
+    "start": "2025-01",
+    "end": "2025-12",
+    "num_samples": 48
+  },
+  "evaluation_metrics": {
+    "mcm": {
+      "mae": 36.14,
+      "rmse": 44.25,
+      "r2": 0.9564
+    },
+    "megaliters": {
+      "mae": 36135.6,
+      "rmse": 44252.8,
+      "r2": 0.9564
+    }
+  },
+  "baselines_comparison": {
+    "persistence_lag1": {
+      "mae_mcm": 86.48,
+      "rmse_mcm": 164.22,
+      "r2": 0.399,
+      "mae_ml": 86479.2
+    },
+    "seasonal_historical_mean": {
+      "mae_mcm": 32.55,
+      "rmse_mcm": 41.62,
+      "r2": 0.9614,
+      "mae_ml": 32550.0
+    },
+    "random_forest": {
+      "mae_mcm": 36.14,
+      "rmse_mcm": 44.25,
+      "r2": 0.9564,
+      "mae_ml": 36135.6
+    },
+    "gradient_boosting": {
+      "mae_mcm": 39.98,
+      "rmse_mcm": 52.67,
+      "r2": 0.9382,
+      "mae_ml": 39978.8
+    }
+  },
+  "feature_importances": [
+    {
+      "feature": "lag_12_inflow",
+      "importance": 0.3495
+    },
+    {
+      "feature": "rainfall_mm",
+      "importance": 0.1515
+    },
+    {
+      "feature": "avg_humidity_pct",
+      "importance": 0.1487
+    },
+    {
+      "feature": "rainfall_anomaly_pct",
+      "importance": 0.1169
+    },
+    {
+      "feature": "capacity_mcm",
+      "importance": 0.1145
+    },
+    {
+      "feature": "avg_soil_moisture_pct",
+      "importance": 0.0545
+    },
+    {
+      "feature": "lag_1_inflow",
+      "importance": 0.0165
+    },
+    {
+      "feature": "res_res_4",
+      "importance": 0.0094
+    },
+    {
+      "feature": "rolling_mean_3_inflow",
+      "importance": 0.008
+    },
+    {
+      "feature": "res_res_3",
+      "importance": 0.0072
+    },
+    {
+      "feature": "avg_temperature_c",
+      "importance": 0.0049
+    },
+    {
+      "feature": "month_num",
+      "importance": 0.0048
+    },
+    {
+      "feature": "evapotranspiration_mm_day",
+      "importance": 0.0046
+    },
+    {
+      "feature": "lag_2_inflow",
+      "importance": 0.004
+    },
+    {
+      "feature": "quarter",
+      "importance": 0.0029
+    },
+    {
+      "feature": "res_res_1",
+      "importance": 0.0012
+    },
+    {
+      "feature": "res_res_2",
+      "importance": 0.0008
+    },
+    {
+      "feature": "is_monsoon",
+      "importance": 0.0001
+    }
+  ],
+  "input_features": [
+    "month_num",
+    "quarter",
+    "is_monsoon",
+    "capacity_mcm",
+    "rainfall_mm",
+    "rainfall_anomaly_pct",
+    "avg_temperature_c",
+    "avg_humidity_pct",
+    "evapotranspiration_mm_day",
+    "avg_soil_moisture_pct",
+    "lag_1_inflow",
+    "lag_2_inflow",
+    "lag_12_inflow",
+    "rolling_mean_3_inflow",
+    "res_res_1",
+    "res_res_2",
+    "res_res_3",
+    "res_res_4"
+  ],
+  "data_sources": [
+    "data/inflow_history.csv",
+    "data/rainfall.csv",
+    "data/weather.csv",
+    "data/reservoirs.csv"
+  ],
+  "status": "trained_and_validated",
+  "pipeline_version": "Stage 4 Production"
+}

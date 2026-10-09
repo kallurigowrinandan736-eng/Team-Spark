@@ -14,7 +14,7 @@ export default function DocsPage() {
           <div className="flex items-center gap-2 mb-1">
             <span className="text-xs font-bold uppercase tracking-wider text-indigo-400">Technical Documentation</span>
           </div>
-          <h1 className="text-2xl font-black text-white tracking-tight">AquaQ System Architecture & Mathematical Models</h1>
+          <h1 className="text-2xl font-black text-white tracking-tight">Jaldhar System Architecture & Mathematical Models</h1>
           <p className="text-xs text-slate-400 mt-1">
             Comprehensive specification of agronomic ML, exact Linear Programming, and Quantum QUBO formulations
           </p>
@@ -84,9 +84,16 @@ export default function DocsPage() {
             <div>• Classical Thermal Decay: T(t) = T0 * alpha^t (where alpha = 0.985)</div>
             <div>• Transverse Tunneling Field: Gamma(t) = Gamma_0 * (1 - t / T_max)</div>
             <div>• Acceptance Criterion: P(accept) = exp(-max(0, Delta_E - Gamma(t)*xi) / T(t))</div>
+
+            <div className="text-white font-bold pt-2">Qiskit SDK Circuit Formulation (QAOA):</div>
+            <div>• Open-source SDK: Integrated with <a href="https://github.com/Qiskit/qiskit" target="_blank" rel="noopener noreferrer" className="text-purple-400 underline">IBM Qiskit</a> (v2.5+)</div>
+            <div>• Problem Unitary: U(C, γ) = e^(-i γ H_C) using Rz single-qubit phases &amp; Rzz 2-qubit CNOT coupling</div>
+            <div>• Mixer Unitary: U(B, β) = e^(-i β H_M) using Rx(2β) transverse tunneling rotations</div>
+            <div>• Statevector Simulation: Exact probability distributions across allocation eigenstates P(|x⟩)</div>
           </div>
         </div>
       </section>
+
 
       {/* Honesty & Limitations */}
       <section className="space-y-4 p-6 rounded-2xl bg-ocean-900/80 border border-slate-800 backdrop-blur-md">

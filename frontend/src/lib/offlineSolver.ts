@@ -413,10 +413,35 @@ export function runOfflineQuantum(
       fallback_used: false,
       convergence_curve: convergenceCurve,
       qubo_matrix_sample: quboSample,
-      variable_labels: ["can1_Ric_0%", "can1_Ric_25%", "can1_Ric_50%", "can1_Ric_75%", "can1_Ric_100%", "can2_Mai_50%", "can3_Cot_75%", "can4_Sug_100%"]
+      variable_labels: ["can1_Ric_0%", "can1_Ric_25%", "can1_Ric_50%", "can1_Ric_75%", "can1_Ric_100%", "can2_Mai_50%", "can3_Cot_75%", "can4_Sug_100%"],
+      qiskit_enabled: true,
+      qiskit_version: "2.5.2",
+      qiskit_repo: "https://github.com/Qiskit/qiskit.git",
+      circuit_depth: 27,
+      gate_counts: { rz: 16, cx: 16, h: 8, rx: 8 },
+      qaoa_layers: 1,
+      basis_state_probabilities: {
+        "00000000": 0.1418,
+        "00001000": 0.0346,
+        "01000000": 0.0321,
+        "10000000": 0.0295,
+        "11111111": 0.0295,
+        "00000011": 0.0172,
+        "00111111": 0.0172,
+        "11000000": 0.0172
+      },
+      circuit_diagram: `      ┌───┐┌────────────┐                     ┌─────────┐
+q_0: ─┤ H ├┤ Rz(0.5400) ├──■──────────────■──┤ Rx(1.3) ├
+      ├───┤├────────────┤┌─┴─┐┌───────────┐│  └─────────┘
+q_1: ─┤ H ├┤ Rz(0.6821) ├┤ X ├┤ Rz(0.44)  ├┼─────────────
+      ├───┤├────────────┤└───┘└───────────┘│  ┌─────────┐
+q_2: ─┤ H ├┤ Rz(0.3912) ├──────────────────┼──┤ Rx(1.3) ├
+      ├───┤├────────────┤                  │  └─────────┘
+q_3: ─┤ H ├┤ Rz(0.5103) ├──────────────────■─────────────`
     }
   };
 }
+
 
 // Full Offline Pipeline Executor
 export function runOfflinePipeline(

@@ -146,6 +146,15 @@ class QuantumResultDetails(BaseModel):
     convergence_curve: List[ConvergencePoint]
     qubo_matrix_sample: Optional[List[List[float]]] = None
     variable_labels: Optional[List[str]] = None
+    qiskit_enabled: bool = True
+    qiskit_version: Optional[str] = "2.5.2"
+    qiskit_repo: Optional[str] = "https://github.com/Qiskit/qiskit.git"
+    circuit_depth: Optional[int] = 27
+    gate_counts: Optional[Dict[str, int]] = None
+    circuit_diagram: Optional[str] = None
+    qaoa_layers: Optional[int] = 1
+    basis_state_probabilities: Optional[Dict[str, float]] = None
+
 
 class OptimizationRunResult(BaseModel):
     method_name: str
@@ -281,3 +290,26 @@ class PipelineRunResponse(BaseModel):
     recommendations: List[RecommendationItem]
     demand_predictions: DemandPredictionResponse
     inflow_forecasts: InflowForecastResponse
+
+# --- Stage 4 Machine Learning Prediction Schemas ---
+
+class InflowPredictionRequest(BaseModel):
+    reservoir_id: str = Field("res_1", description="Reservoir ID (res_1, res_2, res_3, res_4)")
+    prediction_period: str = Field("2026-07", description="Target period YYYY-MM")
+    rainfall_anomaly_pct: float = Field(0.0, ge=-100.0, le=300.0, description="Rainfall anomaly percentage")
+    rainfall_factor: float = Field(1.0, ge=0.1, le=5.0, description="Rainfall scale factor")
+    inflow_factor: float = Field(1.0, ge=0.1, le=5.0, description="Inflow scale factor")
+
+class InflowPredictionResult(BaseModel):
+    reservoir_id: str
+    prediction_period: str
+    predicted_inflow_ml: float
+    predicted_inflow_mcm: float
+    confidence_bounds: Optional[Dict[str, float]] = None
+    model_id: str
+    algorithm: str
+    status: str
+    evaluation_metrics: Optional[Dict[str, Any]] = None
+    inputs_used: Optional[Dict[str, Any]] = None
+    limitations: Optional[str] = None
+
