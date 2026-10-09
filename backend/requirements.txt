@@ -12,4 +12,5 @@ python-multipart>=0.0.9
 # Quantum Computing Framework (https://github.com/Qiskit/qiskit.git)
 qiskit>=2.0.0
 qiskit-ibm-runtime>=0.30.0
+httpx>=0.27.0
 

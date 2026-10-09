@@ -88,6 +88,26 @@ def test_pipeline_run_endpoint():
     print("[PASS] POST /api/pipeline/run: Full optimization pipeline completed with Stage 4 ML.")
 
 
+def test_benchmark_100unit_endpoint():
+    res = client.get("/api/optimization/benchmark-100unit?usable_water=100.0")
+    assert res.status_code == 200
+    data = res.json()
+    assert data["benchmark_problem"]["usable_water_units"] == 100.0
+    assert data["benchmark_problem"]["shortage_units"] == 40.0
+    assert data["lp_solution"]["constraints_satisfied"] is True
+    print("[PASS] GET /api/optimization/benchmark-100unit: Evaluated 100-unit benchmark problem.")
+
+
+def test_level4_specs_endpoint():
+    res = client.get("/api/quantum/level4/specs")
+    assert res.status_code == 200
+    data = res.json()
+    assert "Level 4" in data["level"]
+    assert "IBM Heron" in data["target_hardware"]
+    print("[PASS] GET /api/quantum/level4/specs: Level 4 QEM specifications returned.")
+
+
+
 if __name__ == "__main__":
     print("=" * 60)
     print("Running FastAPI HTTP Endpoint Test Suite")

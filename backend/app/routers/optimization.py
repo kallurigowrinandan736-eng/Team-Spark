@@ -93,3 +93,36 @@ def ibm_runtime_execute(
         p_layers=p_layers
     )
 
+
+@router.get("/benchmark-100unit")
+def get_canonical_100unit_benchmark(usable_water: float = 100.0):
+    """
+    Executes and explains the canonical 100-unit supply vs 140-unit demand benchmark (Part 1.2).
+    Compares Classical Priority LP, Proportional Fair Baseline, and Quantum QUBO/QAOA.
+    """
+    from app.optimization.benchmark_fixture import Benchmark100UnitFixture
+    fixture = Benchmark100UnitFixture(usable_water=usable_water)
+    return {
+        "benchmark_problem": {
+            "usable_water_units": fixture.usable_water,
+            "total_demand_units": fixture.total_demand,
+            "shortage_units": fixture.system_shortage,
+            "crops": fixture.crops
+        },
+        "lp_solution": fixture.solve_classical_priority_lp(),
+        "baseline_solution": fixture.solve_proportional_fair_baseline(),
+        "quantum_qubo_solution": fixture.solve_quantum_qubo_qaoa()
+    }
+
+
+@router.get("/benchmark-100unit/scenarios")
+def get_benchmark_scenarios_comparison():
+    """
+    Evaluates the canonical benchmark across 3 hydrological scenarios:
+    Drought (60 units), Standard Benchmark (100 units), and Monsoon Surplus (160 units).
+    """
+    from app.optimization.benchmark_fixture import Benchmark100UnitFixture
+    fixture = Benchmark100UnitFixture(usable_water=100.0)
+    return fixture.run_multi_scenario_comparison()
+
+
